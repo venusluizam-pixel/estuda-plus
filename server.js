@@ -83,5 +83,5 @@ app.post('/api/community', requirePremium, (req, res) => {
 app.use((req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'public', 'index.html')));
+
 app.listen(PORT, '0.0.0.0', () => console.log(`Estuda+ rodando na porta ${PORT}`));
