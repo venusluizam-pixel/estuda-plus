@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 10000;
 const openai = process.env.OPENAI_API_KEY ? new OpenAI({ apiKey: process.env.OPENAI_API_KEY }) : null;
 
 app.use(express.json({ limit: '120kb' }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(__dirname));
 
 // DEMO ONLY: enables Premium while you test the app. A real Premium system
 // must verify the user's subscription on the server/database.
@@ -81,7 +81,7 @@ app.post('/api/community', requirePremium, (req, res) => {
   res.status(201).json(post);
 });
 app.use((req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, '0.0.0.0', () => console.log(`Estuda+ rodando na porta ${PORT}`));
